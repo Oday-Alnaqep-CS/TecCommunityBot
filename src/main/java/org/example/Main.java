@@ -28,9 +28,7 @@ public class Main extends TelegramLongPollingBot {
 
 
     private final long[] ADMIN_USER_ID = {6390429747L, 8529164463L};
-
     private static final String DB_URL = "jdbc:sqlite:bot_database.db";
-
     private String adminState = "IDLE";
     private String broadcastTarget = "ALL";
 
@@ -1341,10 +1339,28 @@ public class Main extends TelegramLongPollingBot {
 
     public static void main(String[] args) {
         try {
+            // 1. فتح خادم ويب مصغر للاستجابة لمتطلبات Railway وتجنب خطأ 502 Bad Gateway
+            String portStr = System.getenv("PORT");
+            int port = portStr != null ? Integer.parseInt(portStr) : 8080;
+
+            com.sun.net.httpserver.HttpServer server = com.sun.net.httpserver.HttpServer.create(new java.net.InetSocketAddress(port), 0);
+            server.createContext("/", exchange -> {
+                String response = "Bot is running 24/7 successfully!";
+                exchange.sendResponseHeaders(200, response.getBytes().length);
+                java.io.OutputStream os = exchange.getResponseBody();
+                os.write(response.getBytes());
+                os.close();
+            });
+            server.setExecutor(null);
+            server.start();
+            System.out.println("HTTP Server started on port " + port);
+
+            // 2. تشغيل البوت بالطريقة الطبيعية
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
             botsApi.registerBot(new Main());
             System.out.println("🤖 Bot started successfully with SQLite database & Warning System!");
-        } catch (TelegramApiException e) {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
