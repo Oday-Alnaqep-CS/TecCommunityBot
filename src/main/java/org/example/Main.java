@@ -889,14 +889,14 @@ public class Main extends TelegramLongPollingBot {
 
         // الصف الثالث: الأسئلة وحل المشاكل
         List<InlineKeyboardButton> row2 = new ArrayList<>();
-        InlineKeyboardButton btnQandA = new InlineKeyboardButton(" ❓ الأسئلة والمشاكل | Q&A ");
+        InlineKeyboardButton btnQandA = new InlineKeyboardButton(" ❓ الأسئلة والمشاكل  |  Q&A ");
         btnQandA.setUrl("https://t.me/TEC_general/1632");
         row2.add(btnQandA);
 
         List<InlineKeyboardButton> row3 = new ArrayList<>();
         InlineKeyboardButton btnYDC = new InlineKeyboardButton("🇾🇪 المجتمع اليمني | YDC");
         btnYDC.setUrl("https://t.me/YDC_Chat");
-
+        row3.add(btnYDC);
 
 
         rows.add(row0);
