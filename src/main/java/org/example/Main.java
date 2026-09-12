@@ -849,15 +849,16 @@ public class Main extends TelegramLongPollingBot {
                 "  🚀 أهلاً بك : ( " + userDisplay + " ) \n" +
                         "في مجتمع التطور التقني | <b>TEC</b>\n\n" +
 
-                        "💻 مجتمع يجمع المبرمجين والمهتمين بالتقنية، " +
+                        "💻  مجتمع يجمع المبرمجين والمهتمين بالتقنية، " +
                         "لتبادل المعرفة ومشاركة الخبرات وبناء المهارات وتطوير المشاريع.\n\n" +
 
-                        "🌟 معًا نرتقي بالمعرفة، " +
+                        "🌟  معًا نرتقي بالمعرفة، " +
                         "وبالإصرار نصنع الإنجاز، " +
                         "وبالعزيمة نحوّل الأفكار إلى واقع، " +
                         "وبالتكاتف نبني مجتمعًا أقوى ومستقبلًا أفضل.\n\n" +
 
-                        "✨ يمكنك استعراض أقسام المجتمع وقوانينه " +
+                        "✨  يمكنك استعراض أقسام المجتمع وقوانينه " +
+                        "\uD83E\uDD1D شكراً لكونك جزءاً أساسياً من مجتمعنا التقني. " +
                         "عبر الأزرار أدناه 👇\n\n" +
 
                         "🔥 <b>Learn • Build • Share • Grow</b>";
@@ -892,9 +893,16 @@ public class Main extends TelegramLongPollingBot {
         btnQandA.setUrl("https://t.me/TEC_general/1632");
         row2.add(btnQandA);
 
+        List<InlineKeyboardButton> row3 = new ArrayList<>();
+        InlineKeyboardButton btnYDC = new InlineKeyboardButton("🇾🇪 المجتمع اليمني | YDC");
+        btnYDC.setUrl("https://t.me/YDC_Chat");
+
+
+
         rows.add(row0);
         rows.add(row1);
         rows.add(row2);
+        rows.add(row3);
         markup.setKeyboard(rows);
         message.setReplyMarkup(markup);
 
